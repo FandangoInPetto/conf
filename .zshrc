@@ -105,6 +105,8 @@ alias pg='psql -U postgres'
 alias ss='python -m SimpleHTTPServer 3000'
 alias mup='mv /var/www/html/maintenance.html /var/www/html/under_maintenance.html'
 alias mdn='mv /var/www/html/under_maintenance /var/www/html/maintenance.html'
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down'
 
 export PATH="/usr/local/sbin:$PATH"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
