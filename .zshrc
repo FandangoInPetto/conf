@@ -107,6 +107,7 @@ alias mup='mv /var/www/html/maintenance.html /var/www/html/under_maintenance.htm
 alias mdn='mv /var/www/html/under_maintenance /var/www/html/maintenance.html'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
+alias ckey='openssl rand -hex 16'
 
 export PATH="/usr/local/sbin:$PATH"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
