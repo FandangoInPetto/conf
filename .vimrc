@@ -29,3 +29,7 @@ inoremap <Esc>OR *
 inoremap <Esc>Ol +
 inoremap <Esc>OS -
 inoremap <Esc>OM <Enter>
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
