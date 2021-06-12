@@ -91,7 +91,7 @@ alias ..='cd ..'
 alias sb='source ~/.bash_profile'
 alias sz='source ~/.zshrc'
 alias home='cd /home/florent'
-alias www='cd /var/www/'
+alias www='cd /home/florent/www/'
 alias nginxdir='cd /usr/local/etc/nginx'
 alias demnginx='sudo service start nginx'
 alias stpnginx='sudo service stop nginx'
@@ -102,13 +102,39 @@ alias .v='vim ~/.vimrc && source ~/.vimrc'
 alias e='exit'
 alias v='vim'
 alias pg='psql -U postgres'
-alias ss='python -m SimpleHTTPServer 3000'
+alias ss='python3 -m http.server'
 alias mup='mv /var/www/html/maintenance.html /var/www/html/under_maintenance.html'
 alias mdn='mv /var/www/html/under_maintenance /var/www/html/maintenance.html'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
+alias dcb='docker-compose build'
+alias dcr='docker-compose restart'
+alias dpa='docker ps -a'
+alias dlf='docker logs -f'
+alias dcr='docker-compose run'
+alias dvp='docker volume prune'
+alias dbp='docker builder prune'
 alias ckey='openssl rand -hex 16'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
 
-export PATH="/usr/local/sbin:$PATH"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+export PATH="/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:/home/florent/.local/bin:/usr/local/sbin:$PATH"
+export GITLAB_AT="BMcc5PUd5XexG_awQvEf"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/florent/.local/bin/terraform terraform
+
+if [ $UID -eq 0 ]; then CARETCOLOR="red"; else CARETCOLOR="blue"; fi
+
+local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+
+PROMPT='%m %{${fg_bold[blue]}%}:: %{$reset_color%}%{${fg[green]}%}%3~ $(git_prompt_info)%{${fg_bold[$CARETCOLOR]}%}%D %T »%{${reset_color}%} '
+
+RPS1="${return_code}"
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
+ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
+
+#PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} %D %T % %{$reset_color%}>>'
